@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -67,7 +68,7 @@
       </div>
       <div class="flex items-center gap-2">
         <button onclick="openBrandModal()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium">🎨 White-Label</button>
-        <a href="#pricing" class="text-xs px-3.5 py-2 rounded-lg brand-bg text-white font-semibold brand-shadow">Pricing Plans</a>
+        <a href="#pricing" class="text-xs px-3.5 py-2 rounded-lg brand-bg text-white font-semibold brand-shadow">Pricing</a>
       </div>
     </div>
   </header>
@@ -84,7 +85,7 @@
           Next-Gen <span class="brand-text">3D Virtual Campus</span> & School OS
         </h1>
         <p class="text-slate-400 text-sm leading-relaxed">
-          Launch your institution's custom 3D campus, interactive science labs, global student admission profiles, and multi-role management dashboards.
+          Launch your institution's custom 3D campus, interactive science labs, global student admission profiles, and multimedia showcases.
         </p>
 
         <!-- Lab Switcher -->
@@ -149,7 +150,50 @@
     <div id="dashboardContent" class="glass-card rounded-2xl p-5 border border-slate-700/70"></div>
   </section>
 
-  <!-- Global SaaS Pricing Plans Section ($0 / $49 / $199) -->
+  <!-- School Media & Photo/Video Gallery Uploader Section -->
+  <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
+    <div class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 space-y-4">
+        <span class="text-xs font-bold uppercase tracking-wider brand-text">Campus Multimedia Showcase</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Upload School Photos & Videos</h2>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Administrators can publish campus infrastructure photos, laboratory tours, and promotional media links directly to the student portal feed.
+        </p>
+        <form onsubmit="addMediaItem(event)" class="glass-card p-4 rounded-2xl space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Media Title / Description</label>
+            <input type="text" id="mediaTitle" placeholder="e.g., Annual Science Exhibition 2026" required class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Image / Video URL</label>
+            <input type="url" id="mediaUrl" placeholder="https://images.unsplash.com/photo-..." required class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white" />
+          </div>
+          <button type="submit" class="w-full py-2.5 rounded-xl brand-bg text-white font-bold text-xs brand-shadow">➕ Publish to Gallery</button>
+        </form>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="glass-card p-5 rounded-2xl border border-slate-700/70 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">🖼️ Live Campus Media Feed</span>
+            <span class="text-xs text-indigo-300 font-medium">Cloud Synchronized</span>
+          </div>
+          <div id="mediaGrid" class="grid sm:grid-cols-2 gap-3">
+            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus" class="w-full h-32 object-cover" />
+              <div class="p-2.5 text-xs font-semibold text-slate-200">Main Quadrangle & Smart Classes</div>
+            </div>
+            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Lab" class="w-full h-32 object-cover" />
+              <div class="p-2.5 text-xs font-semibold text-slate-200">Advanced 3D Robotics Arena</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global SaaS Pricing Plans Section with Purchase Alert Tracking -->
   <section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
     <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
       <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Tiered Pricing</span>
@@ -169,7 +213,7 @@
             <li>✓ Community Support Forum</li>
           </ul>
         </div>
-        <a href="#admission" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Get Started Free</a>
+        <button onclick="trackPlanPurchase('Starter Pilot ($0)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Get Started Free</button>
       </div>
 
       <!-- Pro Plan ($49) -->
@@ -186,7 +230,7 @@
             <li>✓ Priority Cloud Support</li>
           </ul>
         </div>
-        <a href="#admission" class="w-full py-2.5 rounded-xl brand-bg text-center text-white font-bold text-xs brand-shadow">Choose Pro Plan</a>
+        <button onclick="trackPlanPurchase('Professional SaaS ($49/mo)')" class="w-full py-2.5 rounded-xl brand-bg text-center text-white font-bold text-xs brand-shadow">Choose Pro Plan</button>
       </div>
 
       <!-- Enterprise Plan ($199) -->
@@ -202,12 +246,12 @@
             <li>✓ 24/7 Dedicated Account Manager</li>
           </ul>
         </div>
-        <a href="#admission" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Contact Global Team</a>
+        <button onclick="trackPlanPurchase('Global Enterprise ($199/mo)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Contact Global Team</button>
       </div>
     </div>
   </section>
 
-  <!-- Global 3D Admission Profile Generator (With All Countries) -->
+  <!-- Global 3D Admission Profile Generator with ALL Countries -->
   <section id="admission" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
     <div class="grid lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-6 space-y-4">
@@ -275,156 +319,4 @@
             <div>
               <label class="block text-xs font-semibold text-slate-300 mb-1">Program / Grade</label>
               <select id="stuProgram" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white">
-                <option value="STEM & 3D Robotics (Grade 12)">STEM & 3D Robotics (Grade 12)</option>
-                <option value="JEE / NEET Intensive Coaching">JEE / NEET Intensive Coaching</option>
-                <option value="IB Diploma Science Track">IB Diploma Science Track</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Assigned 3D Lab</label>
-              <select id="stuLab" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white">
-                <option value="Quantum Physics 3D Lab">Quantum Physics 3D Lab</option>
-                <option value="Molecular Chemistry 3D Pod">Molecular Chemistry 3D Pod</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="w-full py-3 rounded-xl brand-bg text-white font-bold text-sm brand-shadow">⚡ Generate 3D Admission Profile</button>
-        </form>
-      </div>
-
-      <div class="lg:col-span-6 flex justify-center">
-        <div class="id-card-3d w-full max-w-md rounded-3xl p-6">
-          <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-            <div>
-              <div id="cardSchoolTitle" class="font-extrabold text-base text-white">EduVerse 3D Global</div>
-              <div class="text-[11px] text-emerald-400 font-semibold">VERIFIED 3D CAMPUS PASS</div>
-            </div>
-            <div class="px-2.5 py-1 rounded-lg bg-slate-800 text-xs font-mono text-slate-200" id="cardRollNo">ID: #EV-2026-849</div>
-          </div>
-          <div class="py-4 flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl brand-bg flex items-center justify-center text-2xl text-white">🎓</div>
-            <div>
-              <h3 id="cardStudentName" class="text-lg font-extrabold text-white">Aarav Sharma</h3>
-              <p id="cardProgram" class="text-xs text-indigo-300 font-medium">STEM & 3D Robotics (Grade 12)</p>
-              <p id="cardCountry" class="text-xs text-slate-400 mt-0.5">Region: 🇮🇳 India</p>
-            </div>
-          </div>
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 space-y-1.5 text-xs">
-            <div class="flex justify-between"><span class="text-slate-400">3D Lab Access:</span><span id="cardLab" class="text-slate-200 font-semibold">Quantum Physics 3D Lab</span></div>
-            <div class="flex justify-between"><span class="text-slate-400">Status:</span><span class="text-emerald-400 font-bold">● Active & Enrolled</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- White-Label Modal -->
-  <div id="brandModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4">
-    <div class="glass-card max-w-md w-full rounded-2xl p-6 border border-slate-700 space-y-4">
-      <div class="flex items-center justify-between">
-        <h3 class="text-base font-extrabold text-white">🎨 White-Label School Customizer</h3>
-        <button onclick="closeBrandModal()" class="text-slate-400 
-<!-- CHOTA SA CODE: School Media & Photo Gallery Uploader -->
-<section class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/75">
-  <div class="glass-card p-5 rounded-2xl border border-slate-700/70 space-y-4">
-    <div class="flex items-center justify-between">
-      <h3 class="text-sm font-extrabold text-white">🖼️ Upload School Photos & Videos Feed</h3>
-      <span class="text-xs text-indigo-300 font-medium">Instant Live Feed</span>
-    </div>
-    <form onsubmit="addMediaItem(event)" class="grid sm:grid-cols-3 gap-3">
-      <input type="text" id="mediaTitle" placeholder="Photo/Video Title" required class="px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white" />
-      <input type="url" id="mediaUrl" placeholder="Image URL (https://...)" required class="px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white" />
-      <button type="submit" class="py-2 rounded-xl brand-bg text-white font-bold text-xs">➕ Add to Gallery</button>
-    </form>
-    <div id="mediaGrid" class="grid sm:grid-cols-3 gap-3 pt-2">
-      <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
-        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus" class="w-full h-28 object-cover" />
-        <div class="p-2 text-xs font-semibold text-slate-200">Main Campus Quadrangle</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  function addMediaItem(e) {
-    e.preventDefault();
-    const title = document.getElementById('mediaTitle').value;
-    const url = document.getElementById('mediaUrl').value;
-    const grid = document.getElementById('mediaGrid');
-    const card = document.createElement('div');
-    card.className = "bg-slate-900 rounded-xl overflow-hidden border border-slate-800";
-    card.innerHTML = `<img src="${url}" alt="Media" class="w-full h-28 object-cover" /><div class="p-2 text-xs font-semibold text-slate-200">${title}</div>`;
-    grid.prepend(card);
-    document.getElementById('mediaTitle').value = '';
-    document.getElementById('mediaUrl').value = '';
-  }
-</script>
-        <!-- Updated Pricing Section with Click & Purchase Tracking -->
-<section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
-  <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
-    <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Tiered Pricing</span>
-    <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Transparent Plans for Institutions Worldwide</h2>
-    <p class="text-slate-400 text-sm">Choose the ideal tier to deploy your white-labeled 3D campus and management OS.</p>
-  </div>
-  <div class="grid md:grid-cols-3 gap-6">
-    <!-- Starter Plan ($0) -->
-    <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
-      <div class="space-y-3">
-        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Starter Pilot</span>
-        <div class="text-3xl font-extrabold text-white">$0 <span class="text-xs font-normal text-slate-400">/ forever free</span></div>
-        <p class="text-xs text-slate-400">Ideal for single independent schools exploring virtual 3D onboarding.</p>
-        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-          <li>✓ 1 Virtual 3D Campus Space</li>
-          <li>✓ Basic Student ID Generator</li>
-          <li>✓ Community Support Forum</li>
-        </ul>
-      </div>
-      <button onclick="trackPlanPurchase('Starter Pilot ($0)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Get Started Free</button>
-    </div>
-
-    <!-- Pro Plan ($49) -->
-    <div class="glass-card rounded-2xl p-6 border-2 brand-border brand-shadow flex flex-col justify-between space-y-6 relative">
-      <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full brand-bg text-[10px] font-extrabold text-white uppercase tracking-wider">Most Popular</div>
-      <div class="space-y-3">
-        <span class="text-xs font-bold px-2.5 py-1 rounded-md brand-bg text-white">Professional SaaS</span>
-        <div class="text-3xl font-extrabold text-white">$49 <span class="text-xs font-normal text-slate-400">/ month</span></div>
-        <p class="text-xs text-slate-400">Full white-labeling and advanced interactive science labs for growing schools.</p>
-        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-          <li>✓ Full Custom School Branding</li>
-          <li>✓ Physics & Bio/Chem 3D Labs</li>
-          <li>✓ Multi-Role Admin OS Access</li>
-          <li>✓ Priority Cloud Support</li>
-        </ul>
-      </div>
-      <button onclick="trackPlanPurchase('Professional SaaS ($49/mo)')" class="w-full py-2.5 rounded-xl brand-bg text-center text-white font-bold text-xs brand-shadow">Choose Pro Plan</button>
-    </div>
-
-    <!-- Enterprise Plan ($199) -->
-    <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
-      <div class="space-y-3">
-        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-indigo-300">Global Network</span>
-        <div class="text-3xl font-extrabold text-white">$199 <span class="text-xs font-normal text-slate-400">/ month</span></div>
-        <p class="text-xs text-slate-400">For international school groups and large coaching networks.</p>
-        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-          <li>✓ Unlimited Multi-Branch Network</li>
-          <li>✓ Dedicated 3D World Servers</li>
-          <li>✓ Custom API & ERP Integrations</li>
-          <li>✓ 24/7 Dedicated Account Manager</li>
-        </ul>
-      </div>
-      <button onclick="trackPlanPurchase('Global Enterprise ($199/mo)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Contact Global Team</button>
-    </div>
-  </div>
-</section>
-
-<script>
-  function trackPlanPurchase(planName) {
-    // Yahan aapko turant pata chal jayega ki kis user ne kaun sa plan click kiya hai
-    console.log("Subscription Clicked for: " + planName);
-    alert(`🎉 Order Initiated!\n\nSelected Plan: ${planName}\n\nRedirecting to secure global payment gateway (Stripe / UPI)...`);
-    
-    // Future mein yahan aap apna actual payment gateway URL daal sakte hain:
-    // window.location.href = "https://buy.stripe.com/your_payment_link";
-  }
-</script>
-          
+                <option value="STEM & 3D Roboti

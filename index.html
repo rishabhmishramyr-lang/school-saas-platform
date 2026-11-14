@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -150,7 +149,39 @@
     <div id="dashboardContent" class="glass-card rounded-2xl p-5 border border-slate-700/70"></div>
   </section>
 
-  <!-- School Media & Photo/Video Gallery Uploader Section -->
+  <!-- LIVE SUBSCRIPTION & ORDER NOTIFICATION BOARD -->
+  <section class="py-6 px-4 max-w-7xl mx-auto">
+    <div class="glass-card p-5 rounded-2xl border border-indigo-500/30 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <h3 class="text-sm font-extrabold text-white">🔔 Live Subscription & Order Notification Board</h3>
+        </div>
+        <span class="text-[11px] text-indigo-300 font-semibold bg-indigo-950/80 px-2.5 py-1 rounded-md border border-indigo-500/30">Real-time Activity Log</span>
+      </div>
+      <p class="text-xs text-slate-400">Live order clicks and plan selections from website visitors appear here automatically.</p>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400">
+              <th class="py-2.5 px-3 font-semibold">Time</th>
+              <th class="py-2.5 px-3 font-semibold">Visitor / School</th>
+              <th class="py-2.5 px-3 font-semibold">Selected Plan</th>
+              <th class="py-2.5 px-3 font-semibold">Status</th>
+            </tr>
+          </thead>
+          <tbody id="liveOrdersTable" class="divide-y divide-slate-800/60 text-slate-300">
+            <tr>
+              <td colspan="4" class="py-4 text-center text-slate-500 italic">No plan clicks recorded yet. Try clicking any pricing plan below!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Media & Photo/Video Gallery Uploader -->
   <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
     <div class="grid lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-5 space-y-4">
@@ -193,7 +224,7 @@
     </div>
   </section>
 
-  <!-- Global SaaS Pricing Plans Section with Purchase Alert Tracking -->
+  <!-- Global SaaS Pricing Plans Section with Live Order Tracking -->
   <section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
     <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
       <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Tiered Pricing</span>
@@ -291,32 +322,4 @@
                   <option value="Germany">Germany</option>
                   <option value="Indonesia">Indonesia</option>
                   <option value="Italy">Italy</option>
-                  <option value="Japan">Japan</option>
-                  <option value="Malaysia">Malaysia</option>
-                  <option value="Mexico">Mexico</option>
-                  <option value="Nepal">Nepal</option>
-                  <option value="Netherlands">Netherlands</option>
-                  <option value="New Zealand">New Zealand</option>
-                  <option value="Nigeria">Nigeria</option>
-                  <option value="Pakistan">Pakistan</option>
-                  <option value="Philippines">Philippines</option>
-                  <option value="Russia">Russia</option>
-                  <option value="Saudi Arabia">Saudi Arabia</option>
-                  <option value="South Africa">South Africa</option>
-                  <option value="South Korea">South Korea</option>
-                  <option value="Spain">Spain</option>
-                  <option value="Sri Lanka">Sri Lanka</option>
-                  <option value="Sweden">Sweden</option>
-                  <option value="Switzerland">Switzerland</option>
-                  <option value="Thailand">Thailand</option>
-                  <option value="Turkey">Turkey</option>
-                  <option value="Vietnam">Vietnam</option>
-                </optgroup>
-              </select>
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Program / Grade</label>
-              <select id="stuProgram" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white">
-                <option value="STEM & 3D Roboti
+                  <option value="Japan">Ja

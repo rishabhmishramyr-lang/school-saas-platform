@@ -359,3 +359,72 @@
     document.getElementById('mediaUrl').value = '';
   }
 </script>
+        <!-- Updated Pricing Section with Click & Purchase Tracking -->
+<section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
+  <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+    <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Tiered Pricing</span>
+    <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Transparent Plans for Institutions Worldwide</h2>
+    <p class="text-slate-400 text-sm">Choose the ideal tier to deploy your white-labeled 3D campus and management OS.</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Starter Plan ($0) -->
+    <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
+      <div class="space-y-3">
+        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Starter Pilot</span>
+        <div class="text-3xl font-extrabold text-white">$0 <span class="text-xs font-normal text-slate-400">/ forever free</span></div>
+        <p class="text-xs text-slate-400">Ideal for single independent schools exploring virtual 3D onboarding.</p>
+        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+          <li>✓ 1 Virtual 3D Campus Space</li>
+          <li>✓ Basic Student ID Generator</li>
+          <li>✓ Community Support Forum</li>
+        </ul>
+      </div>
+      <button onclick="trackPlanPurchase('Starter Pilot ($0)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Get Started Free</button>
+    </div>
+
+    <!-- Pro Plan ($49) -->
+    <div class="glass-card rounded-2xl p-6 border-2 brand-border brand-shadow flex flex-col justify-between space-y-6 relative">
+      <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full brand-bg text-[10px] font-extrabold text-white uppercase tracking-wider">Most Popular</div>
+      <div class="space-y-3">
+        <span class="text-xs font-bold px-2.5 py-1 rounded-md brand-bg text-white">Professional SaaS</span>
+        <div class="text-3xl font-extrabold text-white">$49 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+        <p class="text-xs text-slate-400">Full white-labeling and advanced interactive science labs for growing schools.</p>
+        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+          <li>✓ Full Custom School Branding</li>
+          <li>✓ Physics & Bio/Chem 3D Labs</li>
+          <li>✓ Multi-Role Admin OS Access</li>
+          <li>✓ Priority Cloud Support</li>
+        </ul>
+      </div>
+      <button onclick="trackPlanPurchase('Professional SaaS ($49/mo)')" class="w-full py-2.5 rounded-xl brand-bg text-center text-white font-bold text-xs brand-shadow">Choose Pro Plan</button>
+    </div>
+
+    <!-- Enterprise Plan ($199) -->
+    <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
+      <div class="space-y-3">
+        <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-indigo-300">Global Network</span>
+        <div class="text-3xl font-extrabold text-white">$199 <span class="text-xs font-normal text-slate-400">/ month</span></div>
+        <p class="text-xs text-slate-400">For international school groups and large coaching networks.</p>
+        <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
+          <li>✓ Unlimited Multi-Branch Network</li>
+          <li>✓ Dedicated 3D World Servers</li>
+          <li>✓ Custom API & ERP Integrations</li>
+          <li>✓ 24/7 Dedicated Account Manager</li>
+        </ul>
+      </div>
+      <button onclick="trackPlanPurchase('Global Enterprise ($199/mo)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Contact Global Team</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function trackPlanPurchase(planName) {
+    // Yahan aapko turant pata chal jayega ki kis user ne kaun sa plan click kiya hai
+    console.log("Subscription Clicked for: " + planName);
+    alert(`🎉 Order Initiated!\n\nSelected Plan: ${planName}\n\nRedirecting to secure global payment gateway (Stripe / UPI)...`);
+    
+    // Future mein yahan aap apna actual payment gateway URL daal sakte hain:
+    // window.location.href = "https://buy.stripe.com/your_payment_link";
+  }
+</script>
+          

@@ -324,3 +324,105 @@
                   <option value="Italy">Italy</option>
                   <option value="Japan">Japan</option>
                   <option value
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduVerse 3D — Global EdTech Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --brand-primary: #6366f1; --brand-glow: rgba(99, 102, 241, 0.4); }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050816; color: #f8fafc; overflow-x: hidden; }
+    .glass-card { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(148, 163, 184, 0.16); }
+    .brand-bg { background-color: var(--brand-primary); }
+    .brand-text { color: var(--brand-primary); }
+    .brand-shadow { box-shadow: 0 0 30px var(--brand-glow); }
+    .id-card-3d {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px var(--brand-glow);
+    }
+  </style>
+</head>
+<body class="antialiased py-10 px-4">
+
+  <div class="max-w-4xl mx-auto space-y-8">
+    <div class="text-center space-y-2">
+      <span class="text-xs font-bold uppercase tracking-wider brand-text">Quick Onboarding Test</span>
+      <h1 class="text-3xl font-extrabold text-white">Generate 3D Student ID Profile</h1>
+      <p class="text-slate-400 text-sm">Enter your name and country below to instantly activate your virtual pass.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <!-- Form Section -->
+      <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-6 rounded-3xl space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Student Full Name</label>
+          <input type="text" id="stuName" placeholder="e.g. Rishabh Mishra" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Country / Region</label>
+          <select id="stuCountry" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Germany">Germany</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl brand-bg text-white font-extrabold text-sm brand-shadow transition-transform active:scale-95">
+          ⚡ Confirm & Generate ID Card
+        </button>
+      </form>
+
+      <!-- ID Card Preview Section -->
+      <div class="flex justify-center">
+        <div class="id-card-3d w-full max-w-sm rounded-3xl p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
+            <div>
+              <div class="font-extrabold text-sm text-white">EduVerse 3D Global</div>
+              <div class="text-[10px] text-emerald-400 font-semibold tracking-wider">VERIFIED PASS</div>
+            </div>
+            <div class="px-2 py-1 rounded-lg bg-slate-800 text-xs font-mono text-slate-200" id="cardRollNo">ID: #EV-2026-99</div>
+          </div>
+
+          <div class="flex items-center gap-3.5 py-2">
+            <div class="w-12 h-12 rounded-2xl brand-bg flex items-center justify-center text-xl text-white font-bold">🎓</div>
+            <div>
+              <h3 id="cardStudentName" class="text-base font-extrabold text-white">Rishabh Mishra</h3>
+              <p id="cardCountry" class="text-xs text-indigo-300 font-medium">Region: India</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 flex justify-between items-center text-xs">
+            <span class="text-slate-400">Status:</span>
+            <span class="text-emerald-400 font-bold">● Active & Enrolled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function generateStudentCard(e) {
+      e.preventDefault();
+      const nameVal = document.getElementById('stuName').value;
+      const countryVal = document.getElementById('stuCountry').value;
+
+      // Update Card Text
+      document.getElementById('cardStudentName').innerText = nameVal;
+      document.getElementById('cardCountry').innerText = 'Region: ' + countryVal;
+      document.getElementById('cardRollNo').innerText = 'ID: #EV-2026-' + Math.floor(100 + Math.random() * 900);
+      
+      alert(`✅ Success! ID Card generated for ${nameVal} (${countryVal}).`);
+    }
+  </script>
+</body>
+</html>

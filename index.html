@@ -1,104 +1,110 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduVerse 3D — Global 3D EdTech & School Management SaaS</title>
+  <title>EduVerse 3D — Global EdTech SaaS Platform</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --brand-primary: #6366f1; --brand-glow: rgba(99, 102, 241, 0.4); }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050816; color: #f8fafc; overflow-x: hidden; }
-    .glass-card { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(148, 163, 184, 0.16); }
-    .brand-bg { background-color: var(--brand-primary); }
-    .brand-text { color: var(--brand-primary); }
+    :root { 
+      --brand-primary: #00f3ff; 
+      --brand-secondary: #a855f7;
+      --brand-glow: rgba(0, 243, 255, 0.35); 
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f8fafc; overflow-x: hidden; }
+    .glass-card { background: rgba(13, 20, 36, 0.78); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .brand-gradient-text { background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .brand-bg { background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)); }
+    .brand-solid-bg { background-color: var(--brand-primary); }
     .brand-border { border-color: var(--brand-primary); }
-    .brand-shadow { box-shadow: 0 0 30px var(--brand-glow); }
+    .brand-shadow { box-shadow: 0 0 35px var(--brand-glow); }
 
-    .stage-3d { perspective: 900px; }
+    .stage-3d { perspective: 1000px; }
     .holo-world {
       transform-style: preserve-3d;
-      animation: spin3D 14s linear infinite;
+      animation: spin3D 16s linear infinite;
     }
     .holo-world.paused { animation-play-state: paused; }
     @keyframes spin3D {
-      0% { transform: rotateX(22deg) rotateY(0deg); }
-      100% { transform: rotateX(22deg) rotateY(360deg); }
+      0% { transform: rotateX(20deg) rotateY(0deg); }
+      100% { transform: rotateX(20deg) rotateY(360deg); }
     }
     .cube-face {
       position: absolute;
-      width: 110px;
-      height: 140px;
-      border: 2px solid #818cf8;
-      background: linear-gradient(180deg, rgba(99,102,241,0.45), rgba(15,23,42,0.85));
-      box-shadow: 0 0 25px rgba(99,102,241,0.5) inset;
+      width: 120px;
+      height: 150px;
+      border: 2px solid var(--brand-primary);
+      background: linear-gradient(180deg, rgba(0,243,255,0.25), rgba(3,7,18,0.9));
+      box-shadow: 0 0 30px var(--brand-glow) inset;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 11px;
-      letter-spacing: 1px;
-      color: #e0e7ff;
+      letter-spacing: 1.5px;
+      color: #fff;
     }
     .orbit-ring {
       position: absolute;
-      width: 240px;
-      height: 240px;
+      width: 260px;
+      height: 260px;
       border-radius: 9999px;
-      border: 2px dashed #34d399;
+      border: 2px dashed var(--brand-secondary);
       transform: rotateX(75deg);
-      box-shadow: 0 0 20px rgba(52,211,153,0.4);
+      box-shadow: 0 0 25px rgba(168,85,247,0.4);
     }
     .id-card-3d {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px var(--brand-glow);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px var(--brand-glow);
     }
   </style>
 </head>
-<body class="antialiased pt-4">
+<body class="antialiased pt-4 pb-20">
 
   <!-- Header -->
   <header class="max-w-7xl mx-auto px-4 mb-8">
-    <div class="glass-card rounded-2xl p-3 px-4 flex items-center justify-between border border-slate-800">
-      <div class="flex items-center gap-2.5">
-        <div id="brandLogoBadge" class="w-9 h-9 rounded-xl brand-bg flex items-center justify-center font-extrabold text-white text-base brand-shadow">E3D</div>
-        <span id="headerSchoolName" class="font-bold text-base sm:text-lg text-white">EduVerse 3D Global</span>
+    <div class="glass-card rounded-2xl p-3 px-5 flex items-center justify-between border border-slate-800 shadow-2xl">
+      <div class="flex items-center gap-3">
+        <div id="brandLogoBadge" class="w-10 h-10 rounded-xl brand-bg flex items-center justify-center font-extrabold text-slate-950 text-base brand-shadow">E3D</div>
+        <span id="headerSchoolName" class="font-extrabold text-base sm:text-lg text-white tracking-wide">EduVerse 3D <span class="brand-gradient-text">Global</span></span>
       </div>
       <div class="flex items-center gap-2">
-        <button onclick="openBrandModal()" class="text-xs px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium">🎨 White-Label</button>
-        <a href="#pricing" class="text-xs px-3.5 py-2 rounded-lg brand-bg text-white font-semibold brand-shadow">Pricing</a>
+        <button onclick="openBrandModal()" class="text-xs px-3.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all">🎨 Theme & Brand</button>
+        <a href="#admission" class="text-xs px-4 py-2 rounded-xl brand-bg text-slate-950 font-extrabold brand-shadow transition-all">⚡ 3D Pass</a>
       </div>
     </div>
   </header>
 
   <!-- Hero + Live 3D Viewport -->
-  <section class="pb-14 px-4 max-w-7xl mx-auto">
+  <section class="pb-12 px-4 max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-5 space-y-5">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card text-xs font-semibold text-indigo-300 border border-indigo-500/30">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          Global B2B EdTech Platform for International Schools
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-xs font-bold text-cyan-300 border border-cyan-500/30">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          Next-Gen Immersive EdTech OS
         </div>
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white">
-          Next-Gen <span class="brand-text">3D Virtual Campus</span> & School OS
+          Immersive <span class="brand-gradient-text">3D Virtual Campus</span> & Labs
         </h1>
         <p class="text-slate-400 text-sm leading-relaxed">
-          Launch your institution's custom 3D campus, interactive science labs, global student admission profiles, and multimedia showcases.
+          Empower international institutions with zero-download browser-based 3D campuses, quantum labs, and automated ID credentialing.
         </p>
 
         <!-- Lab Switcher -->
-        <div class="glass-card p-4 rounded-2xl space-y-3">
+        <div class="glass-card p-4 rounded-2xl space-y-3 border border-slate-800">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Switch Institution 3D Environment</span>
-            <span class="text-[11px] text-emerald-400 font-semibold">● WebGL 3D Engine</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Interactive 3D Engine</span>
+            <span class="text-[11px] text-cyan-400 font-semibold">● WebGL Active</span>
           </div>
           <div class="grid grid-cols-3 gap-2">
-            <button onclick="set3DMode('campus')" id="btn-campus" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-semibold brand-bg text-white">🏛️ 3D Campus</button>
-            <button onclick="set3DMode('physics')" id="btn-physics" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300">⚛️ Physics Lab</button>
-            <button onclick="set3DMode('chem')" id="btn-chem" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300">🧬 Bio/Chem Lab</button>
+            <button onclick="set3DMode('campus')" id="btn-campus" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-bold brand-bg text-slate-950 transition-all">🏛️ Campus</button>
+            <button onclick="set3DMode('physics')" id="btn-physics" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">⚛️ Physics</button>
+            <button onclick="set3DMode('chem')" id="btn-chem" class="mode-btn px-2.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🧬 Bio/Chem</button>
           </div>
-          <p id="labDescription" class="text-xs text-slate-400">Viewing: Main Global Academic Tower, Smart Classrooms & Digital Library.</p>
+          <p id="labDescription" class="text-xs text-slate-400">Viewing: Main Academic Tower & Immersive Smart Classrooms.</p>
         </div>
       </div>
 
@@ -106,27 +112,106 @@
       <div class="lg:col-span-7">
         <div class="glass-card p-3 rounded-2xl border border-slate-700/80 brand-shadow">
           <div class="flex items-center justify-between px-2 pb-2 text-xs">
-            <span class="font-semibold text-slate-200">🌐 Live 3D Campus Simulation (Touch / Drag)</span>
-            <button onclick="toggleAutoRotate()" id="rotateStatusBtn" class="px-2.5 py-1 rounded-md bg-slate-800 text-emerald-400 font-semibold">Auto-Rotate: ON</button>
+            <span class="font-semibold text-slate-200">🌐 Holographic 3D Viewport (Swipe / Drag)</span>
+            <button onclick="toggleAutoRotate()" id="rotateStatusBtn" class="px-2.5 py-1 rounded-md bg-slate-900 text-cyan-400 font-bold border border-slate-800">Auto-Rotate: ON</button>
           </div>
 
-          <div id="canvas-container" class="stage-3d w-full h-[330px] sm:h-[400px] bg-gradient-to-b from-slate-900 via-[#080d24] to-slate-950 rounded-xl overflow-hidden relative flex items-center justify-center border border-indigo-500/20">
-            <div class="absolute inset-x-0 bottom-0 h-32 opacity-30" style="background-image: linear-gradient(#6366f1 1px, transparent 1px), linear-gradient(90deg, #6366f1 1px, transparent 1px); background-size: 28px 28px; transform: perspective(300px) rotateX(60deg);"></div>
+          <div id="canvas-container" class="stage-3d w-full h-[330px] sm:h-[400px] bg-gradient-to-b from-slate-950 via-[#060b1e] to-slate-950 rounded-xl overflow-hidden relative flex items-center justify-center border border-cyan-500/20">
+            <div class="absolute inset-x-0 bottom-0 h-32 opacity-25" style="background-image: linear-gradient(var(--brand-primary) 1px, transparent 1px), linear-gradient(90deg, var(--brand-primary) 1px, transparent 1px); background-size: 30px 30px; transform: perspective(300px) rotateX(60deg);"></div>
 
             <div id="holoWorld" class="holo-world relative w-40 h-40 flex items-center justify-center">
               <div class="orbit-ring"></div>
-              <div id="holoFaces" class="relative w-[110px] h-[140px]" style="transform-style: preserve-3d;">
-                <div class="cube-face" style="transform: rotateY(0deg) translateZ(55px);">MAIN TOWER</div>
-                <div class="cube-face" style="transform: rotateY(90deg) translateZ(55px);">3D LABS</div>
-                <div class="cube-face" style="transform: rotateY(180deg) translateZ(55px);">AI LIBRARY</div>
-                <div class="cube-face" style="transform: rotateY(-90deg) translateZ(55px);">ADMIN HUB</div>
+              <div id="holoFaces" class="relative w-[120px] h-[150px]" style="transform-style: preserve-3d;">
+                <div class="cube-face" style="transform: rotateY(0deg) translateZ(60px);">MAIN TOWER</div>
+                <div class="cube-face" style="transform: rotateY(90deg) translateZ(60px);">3D LABS</div>
+                <div class="cube-face" style="transform: rotateY(180deg) translateZ(60px);">AI LIBRARY</div>
+                <div class="cube-face" style="transform: rotateY(-90deg) translateZ(60px);">ADMIN HUB</div>
               </div>
             </div>
 
-            <div id="holoBadge" class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] bg-slate-900/85 px-3 py-2 rounded-lg border border-slate-700/70">
-              <span class="text-indigo-300 font-semibold">🏛️ 3D Academic Campus Active</span>
-              <span class="text-slate-400">Swipe Left/Right to Rotate</span>
+            <div id="holoBadge" class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-800 shadow-lg">
+              <span class="text-cyan-300 font-bold">🏛️ 3D Academic Campus Active</span>
+              <span class="text-slate-400">Swipe to Rotate</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global 3D Admission Profile Generator -->
+  <section id="admission" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/60">
+    <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
+      <span class="text-xs font-bold uppercase tracking-wider brand-gradient-text">Global Paperless Onboarding</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">3D Admission Profile & Digital Pass</h2>
+      <p class="text-slate-400 text-sm">Enter student details below to generate an instant verifiable credential pass.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6">
+        <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border border-cyan-500/20">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name</label>
+              <input type="text" id="stuName" value="Rishabh Mishra" required class="w-full px-3.5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400 transition-all" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Country / Region</label>
+              <select id="stuCountry" class="w-full px-3.5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400 transition-all">
+                <option value="India">India</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Germany">Germany</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Program / Grade</label>
+              <select id="stuProgram" class="w-full px-3.5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option value="STEM & 3D Robotics (Grade 12)">STEM & 3D Robotics (Grade 12)</option>
+                <option value="JEE / NEET Intensive Coaching">JEE / NEET Intensive Coaching</option>
+                <option value="IB Diploma Science Track">IB Diploma Science Track</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Assigned 3D Lab</label>
+              <select id="stuLab" class="w-full px-3.5 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option value="Quantum Physics 3D Lab">Quantum Physics 3D Lab</option>
+                <option value="Molecular Chemistry 3D Pod">Molecular Chemistry 3D Pod</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-4 rounded-xl brand-bg text-slate-950 font-extrabold text-sm brand-shadow transition-transform active:scale-95 flex items-center justify-center gap-2 mt-2">
+            <span>⚡ Generate 3D Admission Profile</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="lg:col-span-6 flex justify-center">
+        <div class="id-card-3d w-full max-w-md rounded-3xl p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <div id="cardSchoolTitle" class="font-extrabold text-base text-white">EduVerse 3D Global</div>
+              <div class="text-[11px] text-cyan-400 font-bold tracking-wider">VERIFIED 3D CAMPUS PASS</div>
+            </div>
+            <div class="px-2.5 py-1 rounded-lg bg-slate-900 text-xs font-mono text-cyan-300 border border-slate-800" id="cardRollNo">ID: #EV-2026-849</div>
+          </div>
+          <div class="py-3 flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl brand-bg flex items-center justify-center text-2xl text-slate-950 font-bold shadow-md">🎓</div>
+            <div>
+              <h3 id="cardStudentName" class="text-lg font-extrabold text-white">Rishabh Mishra</h3>
+              <p id="cardProgram" class="text-xs text-cyan-300 font-medium">STEM & 3D Robotics (Grade 12)</p>
+              <p id="cardCountry" class="text-xs text-slate-400 mt-0.5">Region: India</p>
+            </div>
+          </div>
+          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-slate-400">3D Lab Access:</span><span id="cardLab" class="text-slate-200 font-semibold">Quantum Physics 3D Lab</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Credential Status:</span><span class="text-emerald-400 font-extrabold">● Active & Enrolled</span></div>
           </div>
         </div>
       </div>
@@ -134,46 +219,46 @@
   </section>
 
   <!-- Multi-Role Management Dashboard -->
-  <section id="dashboard" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
+  <section id="dashboard" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/60">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
-        <span class="text-xs font-bold uppercase tracking-wider brand-text">All-In-One School OS</span>
+        <span class="text-xs font-bold uppercase tracking-wider brand-gradient-text">All-In-One School OS</span>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Multi-Role Management Dashboard</h2>
       </div>
-      <div class="inline-flex p-1 rounded-xl glass-card border border-slate-700">
-        <button onclick="switchRole('admin')" id="role-admin" class="role-tab px-3.5 py-2 rounded-lg text-xs font-bold brand-bg text-white">🛡️ Admin</button>
-        <button onclick="switchRole('teacher')" id="role-teacher" class="role-tab px-3.5 py-2 rounded-lg text-xs font-bold text-slate-300">👨‍🏫 Teacher</button>
-        <button onclick="switchRole('student')" id="role-student" class="role-tab px-3.5 py-2 rounded-lg text-xs font-bold text-slate-300">🎓 Student</button>
+      <div class="inline-flex p-1 rounded-xl glass-card border border-slate-800">
+        <button onclick="switchRole('admin')" id="role-admin" class="role-tab px-4 py-2 rounded-lg text-xs font-extrabold brand-bg text-slate-950 transition-all">🛡️ Admin</button>
+        <button onclick="switchRole('teacher')" id="role-teacher" class="role-tab px-4 py-2 rounded-lg text-xs font-bold text-slate-300 transition-all">👨‍🏫 Teacher</button>
+        <button onclick="switchRole('student')" id="role-student" class="role-tab px-4 py-2 rounded-lg text-xs font-bold text-slate-300 transition-all">🎓 Student</button>
       </div>
     </div>
-    <div id="dashboardContent" class="glass-card rounded-2xl p-5 border border-slate-700/70"></div>
+    <div id="dashboardContent" class="glass-card rounded-2xl p-5 border border-slate-800 shadow-xl"></div>
   </section>
 
-  <!-- LIVE SUBSCRIPTION & ORDER NOTIFICATION BOARD -->
+  <!-- Live Subscription & Order Notification Board -->
   <section class="py-6 px-4 max-w-7xl mx-auto">
-    <div class="glass-card p-5 rounded-2xl border border-indigo-500/30 space-y-4">
+    <div class="glass-card p-5 rounded-2xl border border-cyan-500/30 space-y-4 shadow-xl">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
           <h3 class="text-sm font-extrabold text-white">🔔 Live Subscription & Order Notification Board</h3>
         </div>
-        <span class="text-[11px] text-indigo-300 font-semibold bg-indigo-950/80 px-2.5 py-1 rounded-md border border-indigo-500/30">Real-time Activity Log</span>
+        <span class="text-[11px] text-cyan-300 font-bold bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-500/30">Real-time Stream</span>
       </div>
-      <p class="text-xs text-slate-400">Live order clicks and plan selections from website visitors appear here automatically.</p>
+      <p class="text-xs text-slate-400">Live order clicks and subscription tier interactions from global visitors are tracked here instantly.</p>
       
       <div class="overflow-x-auto">
         <table class="w-full text-left text-xs">
           <thead>
             <tr class="border-b border-slate-800 text-slate-400">
-              <th class="py-2.5 px-3 font-semibold">Time</th>
-              <th class="py-2.5 px-3 font-semibold">Visitor / School</th>
+              <th class="py-2.5 px-3 font-semibold">Timestamp</th>
+              <th class="py-2.5 px-3 font-semibold">Visitor / Institution</th>
               <th class="py-2.5 px-3 font-semibold">Selected Plan</th>
-              <th class="py-2.5 px-3 font-semibold">Status</th>
+              <th class="py-2.5 px-3 font-semibold">Activity Status</th>
             </tr>
           </thead>
           <tbody id="liveOrdersTable" class="divide-y divide-slate-800/60 text-slate-300">
             <tr>
-              <td colspan="4" class="py-4 text-center text-slate-500 italic">No plan clicks recorded yet. Try clicking any pricing plan below!</td>
+              <td colspan="4" class="py-4 text-center text-slate-500 italic">No plan clicks recorded yet. Try selecting any pricing tier below!</td>
             </tr>
           </tbody>
         </table>
@@ -181,42 +266,42 @@
     </div>
   </section>
 
-  <!-- School Media & Photo/Video Gallery Uploader -->
-  <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
+  <!-- School Media & Gallery Uploader -->
+  <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/60">
     <div class="grid lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-5 space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider brand-text">Campus Multimedia Showcase</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Upload School Photos & Videos</h2>
+        <span class="text-xs font-bold uppercase tracking-wider brand-gradient-text">Campus Multimedia Showcase</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Publish Media & Infrastructure Tours</h2>
         <p class="text-slate-400 text-sm leading-relaxed">
-          Administrators can publish campus infrastructure photos, laboratory tours, and promotional media links directly to the student portal feed.
+          Administrators can instantly push campus photographs, 3D lab walkthroughs, and event banners directly to the global portal feed.
         </p>
-        <form onsubmit="addMediaItem(event)" class="glass-card p-4 rounded-2xl space-y-3">
+        <form onsubmit="addMediaItem(event)" class="glass-card p-4 rounded-2xl space-y-3 border border-slate-800">
           <div>
             <label class="block text-xs font-semibold text-slate-300 mb-1">Media Title / Description</label>
-            <input type="text" id="mediaTitle" placeholder="e.g., Annual Science Exhibition 2026" required class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white" />
+            <input type="text" id="mediaTitle" placeholder="e.g., Annual Global Science Expo 2026" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400" />
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-300 mb-1">Image / Video URL</label>
-            <input type="url" id="mediaUrl" placeholder="https://images.unsplash.com/photo-..." required class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white" />
+            <input type="url" id="mediaUrl" placeholder="https://images.unsplash.com/photo-..." required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400" />
           </div>
-          <button type="submit" class="w-full py-2.5 rounded-xl brand-bg text-white font-bold text-xs brand-shadow">➕ Publish to Gallery</button>
+          <button type="submit" class="w-full py-3 rounded-xl brand-bg text-slate-950 font-extrabold text-xs brand-shadow transition-all">➕ Publish to Live Feed</button>
         </form>
       </div>
 
       <div class="lg:col-span-7">
-        <div class="glass-card p-5 rounded-2xl border border-slate-700/70 space-y-4">
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">🖼️ Live Campus Media Feed</span>
-            <span class="text-xs text-indigo-300 font-medium">Cloud Synchronized</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300">🖼️ Live Campus Media Stream</span>
+            <span class="text-xs text-cyan-300 font-semibold">Cloud Synced</span>
           </div>
           <div id="mediaGrid" class="grid sm:grid-cols-2 gap-3">
-            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-md">
               <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus" class="w-full h-32 object-cover" />
-              <div class="p-2.5 text-xs font-semibold text-slate-200">Main Quadrangle & Smart Classes</div>
+              <div class="p-3 text-xs font-bold text-slate-200">Main Quadrangle & Immersive Pods</div>
             </div>
-            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+            <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-md">
               <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Lab" class="w-full h-32 object-cover" />
-              <div class="p-2.5 text-xs font-semibold text-slate-200">Advanced 3D Robotics Arena</div>
+              <div class="p-3 text-xs font-bold text-slate-200">Advanced 3D Robotics Arena</div>
             </div>
           </div>
         </div>
@@ -224,420 +309,14 @@
     </div>
   </section>
 
-  <!-- Global SaaS Pricing Plans Section with Live Order Tracking -->
-  <section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
+  <!-- Global SaaS Pricing Plans Section -->
+  <section id="pricing" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/60">
     <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
-      <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Tiered Pricing</span>
+      <span class="text-xs font-bold uppercase tracking-wider brand-gradient-text">Global Tiered SaaS Pricing</span>
       <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Transparent Plans for Institutions Worldwide</h2>
-      <p class="text-slate-400 text-sm">Choose the ideal tier to deploy your white-labeled 3D campus and management OS.</p>
+      <p class="text-slate-400 text-sm">Deploy your white-labeled 3D campus ecosystem with predictable monthly tiers.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
-      <!-- Starter Plan ($0) -->
-      <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
-        <div class="space-y-3">
-          <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Starter Pilot</span>
-          <div class="text-3xl font-extrabold text-white">$0 <span class="text-xs font-normal text-slate-400">/ forever free</span></div>
-          <p class="text-xs text-slate-400">Ideal for single independent schools exploring virtual 3D onboarding.</p>
-          <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-            <li>✓ 1 Virtual 3D Campus Space</li>
-            <li>✓ Basic Student ID Generator</li>
-            <li>✓ Community Support Forum</li>
-          </ul>
-        </div>
-        <button onclick="trackPlanPurchase('Starter Pilot ($0)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Get Started Free</button>
-      </div>
-
-      <!-- Pro Plan ($49) -->
-      <div class="glass-card rounded-2xl p-6 border-2 brand-border brand-shadow flex flex-col justify-between space-y-6 relative">
-        <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full brand-bg text-[10px] font-extrabold text-white uppercase tracking-wider">Most Popular</div>
-        <div class="space-y-3">
-          <span class="text-xs font-bold px-2.5 py-1 rounded-md brand-bg text-white">Professional SaaS</span>
-          <div class="text-3xl font-extrabold text-white">$49 <span class="text-xs font-normal text-slate-400">/ month</span></div>
-          <p class="text-xs text-slate-400">Full white-labeling and advanced interactive science labs for growing schools.</p>
-          <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-            <li>✓ Full Custom School Branding</li>
-            <li>✓ Physics & Bio/Chem 3D Labs</li>
-            <li>✓ Multi-Role Admin OS Access</li>
-            <li>✓ Priority Cloud Support</li>
-          </ul>
-        </div>
-        <button onclick="trackPlanPurchase('Professional SaaS ($49/mo)')" class="w-full py-2.5 rounded-xl brand-bg text-center text-white font-bold text-xs brand-shadow">Choose Pro Plan</button>
-      </div>
-
-      <!-- Enterprise Plan ($199) -->
-      <div class="glass-card rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between space-y-6">
-        <div class="space-y-3">
-          <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-800 text-indigo-300">Global Network</span>
-          <div class="text-3xl font-extrabold text-white">$199 <span class="text-xs font-normal text-slate-400">/ month</span></div>
-          <p class="text-xs text-slate-400">For international school groups and large coaching networks.</p>
-          <ul class="space-y-2 text-xs text-slate-300 pt-3 border-t border-slate-800">
-            <li>✓ Unlimited Multi-Branch Network</li>
-            <li>✓ Dedicated 3D World Servers</li>
-            <li>✓ Custom API & ERP Integrations</li>
-            <li>✓ 24/7 Dedicated Account Manager</li>
-          </ul>
-        </div>
-        <button onclick="trackPlanPurchase('Global Enterprise ($199/mo)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-center text-white font-bold text-xs">Contact Global Team</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Global 3D Admission Profile Generator with ALL Countries -->
-  <section id="admission" class="py-12 px-4 max-w-7xl mx-auto border-t border-slate-800/70">
-    <div class="grid lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-6 space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Paperless Onboarding</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">3D Admission Profile & Digital Pass</h2>
-        <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-5 rounded-2xl space-y-4">
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name</label>
-              <input type="text" id="stuName" placeholder="Enter full name" required class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Country / Region</label>
-              <select id="stuCountry" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white">
-                <optgroup label="Popular Regions">
-                  <option value="India">India</option>
-                  <option value="United States">United States</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="United Arab Emirates">United Arab Emirates</option>
-                  <option value="Canada">Canada</option>
-                  <option value="Australia">Australia</option>
-                  <option value="Singapore">Singapore</option>
-                </optgroup>
-                <optgroup label="All Global Countries">
-                  <option value="Afghanistan">Afghanistan</option>
-                  <option value="Albania">Albania</option>
-                  <option value="Algeria">Algeria</option>
-                  <option value="Argentina">Argentina</option>
-                  <option value="Armenia">Armenia</option>
-                  <option value="Austria">Austria</option>
-                  <option value="Bangladesh">Bangladesh</option>
-                  <option value="Belgium">Belgium</option>
-                  <option value="Brazil">Brazil</option>
-                  <option value="China">China</option>
-                  <option value="Egypt">Egypt</option>
-                  <option value="France">France</option>
-                  <option value="Germany">Germany</option>
-                  <option value="Indonesia">Indonesia</option>
-                  <option value="Italy">Italy</option>
-                  <option value="Japan">Japan</option>
-                  <option value
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduVerse 3D — Global EdTech Platform</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --brand-primary: #6366f1; --brand-glow: rgba(99, 102, 241, 0.4); }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050816; color: #f8fafc; overflow-x: hidden; }
-    .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(148, 163, 184, 0.2); }
-    .brand-bg { background-color: var(--brand-primary); }
-    .brand-text { color: var(--brand-primary); }
-    .brand-shadow { box-shadow: 0 0 30px var(--brand-glow); }
-    .id-card-3d {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px var(--brand-glow);
-    }
-  </style>
-</head>
-<body class="antialiased py-10 px-4">
-
-  <div class="max-w-4xl mx-auto space-y-10">
-    <div class="text-center space-y-2">
-      <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Onboarding Portal</span>
-      <h1 class="text-3xl font-extrabold text-white">Generate 3D Student Admission Profile</h1>
-      <p class="text-slate-400 text-sm">Enter student details below and click submit to instantly activate the digital pass.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      
-      <!-- FORM SECTION WITH CLEAR SUBMIT BUTTON -->
-      <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-6 rounded-3xl space-y-4 shadow-xl">
-        <h2 class="text-lg font-bold text-white border-b border-slate-800 pb-2">Student Registration</h2>
-        
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name</label>
-          <input type="text" id="stuName" placeholder="e.g. Rishabh Mishra" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Country / Region</label>
-          <select id="stuCountry" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-            <option value="India">India</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="Singapore">Singapore</option>
-            <option value="Germany">Germany</option>
-          </select>
-        </div>
-
-        <!-- EXPLICIT SUBMIT BUTTON -->
-        <button type="submit" class="w-full py-4 rounded-xl brand-bg text-white font-extrabold text-sm brand-shadow transition-transform active:scale-95 flex items-center justify-center gap-2 mt-4">
-          <span>⚡ Generate 3D Admission Profile</span>
-        </button>
-      </form>
-
-      <!-- ID CARD PREVIEW -->
-      <div class="flex justify-center">
-        <div class="id-card-3d w-full max-w-sm rounded-3xl p-6 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
-            <div>
-              <div class="font-extrabold text-sm text-white">EduVerse 3D Global</div>
-              <div class="text-[10px] text-emerald-400 font-semibold tracking-wider">VERIFIED PASS</div>
-            </div>
-            <div class="px-2 py-1 rounded-lg bg-slate-800 text-xs font-mono text-slate-200" id="cardRollNo">ID: #EV-2026-99</div>
-          </div>
-
-          <div class="flex items-center gap-3.5 py-2">
-            <div class="w-12 h-12 rounded-2xl brand-bg flex items-center justify-center text-xl text-white font-bold">🎓</div>
-            <div>
-              <h3 id="cardStudentName" class="text-base font-extrabold text-white">Rishabh Mishra</h3>
-              <p id="cardCountry" class="text-xs text-indigo-300 font-medium">Region: India</p>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 flex justify-between items-center text-xs">
-            <span class="text-slate-400">Status:</span>
-            <span class="text-emerald-400 font-bold">● Active & Enrolled</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function generateStudentCard(e) {
-      e.preventDefault();
-      const nameVal = document.getElementById('stuName').value;
-      const countryVal = document.getElementById('stuCountry').value;
-
-      // Update Card Text
-      document.getElementById('cardStudentName').innerText = nameVal;
-      document.getElementById('cardCountry').innerText = 'Region: ' + countryVal;
-      document.getElementById('cardRollNo').innerText = 'ID: #EV-2026-' + Math.floor(100 + Math.random() * 900);
-      
-      alert(`✅ Success! 3D Admission Profile generated for ${nameVal} (${countryVal}).`);
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduVerse 3D — Global EdTech SaaS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --brand-primary: #6366f1; --brand-glow: rgba(99, 102, 241, 0.4); }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050816; color: #f8fafc; overflow-x: hidden; }
-    .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(148, 163, 184, 0.2); }
-    .brand-bg { background-color: var(--brand-primary); }
-    .brand-text { color: var(--brand-primary); }
-    .brand-shadow { box-shadow: 0 0 30px var(--brand-glow); }
-    .id-card-3d {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px var(--brand-glow);
-    }
-  </style>
-</head>
-<body class="antialiased py-8 px-4">
-
-  <div class="max-w-4xl mx-auto space-y-10">
-    <div class="text-center space-y-2">
-      <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Onboarding Portal</span>
-      <h1 class="text-3xl font-extrabold text-white">EduVerse 3D Admission & ID Generator</h1>
-      <p class="text-slate-400 text-sm">Test your interactive student onboarding pass below.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      
-      <!-- WORKING FORM -->
-      <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border border-indigo-500/30">
-        <h2 class="text-lg font-bold text-white border-b border-slate-800 pb-2">Student Registration</h2>
-        
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name</label>
-          <input type="text" id="stuName" value="Rishabh Mishra" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Country / Region</label>
-          <select id="stuCountry" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-            <option value="India">India</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="Singapore">Singapore</option>
-          </select>
-        </div>
-
-        <button type="submit" class="w-full py-4 rounded-xl brand-bg text-white font-extrabold text-sm brand-shadow transition-transform active:scale-95 flex items-center justify-center gap-2 mt-2">
-          <span>⚡ Generate 3D Admission Profile</span>
-        </button>
-      </form>
-
-      <!-- LIVE ID CARD -->
-      <div class="flex justify-center">
-        <div class="id-card-3d w-full max-w-sm rounded-3xl p-6 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
-            <div>
-              <div id="cardSchoolTitle" class="font-extrabold text-sm text-white">EduVerse 3D Global</div>
-              <div class="text-[10px] text-emerald-400 font-semibold tracking-wider">VERIFIED PASS</div>
-            </div>
-            <div class="px-2 py-1 rounded-lg bg-slate-800 text-xs font-mono text-slate-200" id="cardRollNo">ID: #EV-2026-99</div>
-          </div>
-
-          <div class="flex items-center gap-3.5 py-2">
-            <div class="w-12 h-12 rounded-2xl brand-bg flex items-center justify-center text-xl text-white font-bold">🎓</div>
-            <div>
-              <h3 id="cardStudentName" class="text-base font-extrabold text-white">Rishabh Mishra</h3>
-              <p id="cardCountry" class="text-xs text-indigo-300 font-medium">Region: India</p>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 flex justify-between items-center text-xs">
-            <span class="text-slate-400">Status:</span>
-            <span class="text-emerald-400 font-bold">● Active & Enrolled</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function generateStudentCard(event) {
-      event.preventDefault(); // Page reload hone se rokta hai
-      
-      const nameInput = document.getElementById('stuName').value;
-      const countryInput = document.getElementById('stuCountry').value;
-
-      document.getElementById('cardStudentName').innerText = nameInput;
-      document.getElementById('cardCountry').innerText = 'Region: ' + countryInput;
-      document.getElementById('cardRollNo').innerText = 'ID: #EV-2026-' + Math.floor(100 + Math.random() * 900);
-      
-      alert('✅ Success! 3D Admission Profile generated for ' + nameInput + ' (' + countryInput + ')');
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduVerse 3D — Global EdTech SaaS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --brand-primary: #6366f1; --brand-glow: rgba(99, 102, 241, 0.4); }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050816; color: #f8fafc; overflow-x: hidden; }
-    .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(148, 163, 184, 0.2); }
-    .brand-bg { background-color: var(--brand-primary); }
-    .brand-text { color: var(--brand-primary); }
-    .brand-shadow { box-shadow: 0 0 30px var(--brand-glow); }
-    .id-card-3d {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px var(--brand-glow);
-    }
-  </style>
-</head>
-<body class="antialiased py-8 px-4">
-
-  <div class="max-w-4xl mx-auto space-y-10">
-    <div class="text-center space-y-2">
-      <span class="text-xs font-bold uppercase tracking-wider brand-text">Global Onboarding Portal</span>
-      <h1 class="text-3xl font-extrabold text-white">EduVerse 3D Admission & ID Generator</h1>
-      <p class="text-slate-400 text-sm">Test your interactive student onboarding pass below.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      
-      <!-- WORKING FORM -->
-      <form id="admissionForm" onsubmit="generateStudentCard(event)" class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border border-indigo-500/30">
-        <h2 class="text-lg font-bold text-white border-b border-slate-800 pb-2">Student Registration</h2>
-        
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name</label>
-          <input type="text" id="stuName" value="Rishabh Mishra" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Country / Region</label>
-          <select id="stuCountry" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-            <option value="India">India</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="Singapore">Singapore</option>
-          </select>
-        </div>
-
-        <button type="submit" class="w-full py-4 rounded-xl brand-bg text-white font-extrabold text-sm brand-shadow transition-transform active:scale-95 flex items-center justify-center gap-2 mt-2">
-          <span>⚡ Generate 3D Admission Profile</span>
-        </button>
-      </form>
-
-      <!-- LIVE ID CARD -->
-      <div class="flex justify-center">
-        <div class="id-card-3d w-full max-w-sm rounded-3xl p-6 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
-            <div>
-              <div id="cardSchoolTitle" class="font-extrabold text-sm text-white">EduVerse 3D Global</div>
-              <div class="text-[10px] text-emerald-400 font-semibold tracking-wider">VERIFIED PASS</div>
-            </div>
-            <div class="px-2 py-1 rounded-lg bg-slate-800 text-xs font-mono text-slate-200" id="cardRollNo">ID: #EV-2026-99</div>
-          </div>
-
-          <div class="flex items-center gap-3.5 py-2">
-            <div class="w-12 h-12 rounded-2xl brand-bg flex items-center justify-center text-xl text-white font-bold">🎓</div>
-            <div>
-              <h3 id="cardStudentName" class="text-base font-extrabold text-white">Rishabh Mishra</h3>
-              <p id="cardCountry" class="text-xs text-indigo-300 font-medium">Region: India</p>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 flex justify-between items-center text-xs">
-            <span class="text-slate-400">Status:</span>
-            <span class="text-emerald-400 font-bold">● Active & Enrolled</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function generateStudentCard(event) {
-      event.preventDefault();
-      
-      const nameInput = document.getElementById('stuName').value;
-      const countryInput = document.getElementById('stuCountry').value;
-
-      document.getElementById('cardStudentName').innerText = nameInput;
-      document.getElementById('cardCountry').innerText = 'Region: ' + countryInput;
-      document.getElementById('cardRollNo').innerText = 'ID: #EV-2026-' + Math.floor(100 + Math.random() * 900);
-      
-      alert('✅ Success! 3D Admission Profile generated for ' + nameInput + ' (' + countryInput + ')');
-    }
-  </script>
-</body>
-</html>
+      <!-- Starter Plan -->
+      <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between space-y-6 shadow-xl">
+       
